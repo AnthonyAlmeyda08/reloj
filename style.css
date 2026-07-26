@@ -1,0 +1,374 @@
+/* ===================================
+   RESET GENERAL
+=================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  font-family: "Orbitron", sans-serif;
+
+  background: radial-gradient(circle at center, #12384d 0%, #020617 65%);
+
+  color: white;
+}
+
+/* ===================================
+   CONTENEDOR PRINCIPAL
+=================================== */
+
+.clock-container {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 45px;
+
+  position: relative;
+}
+
+.clock-container::before {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+
+  height: 500px;
+
+  background: #00eaff;
+
+  filter: blur(160px);
+
+  opacity: 0.15;
+
+  z-index: -1;
+}
+
+/* ===================================
+   ESFERA DEL RELOJ
+=================================== */
+
+.clock-face {
+  width: 330px;
+
+  height: 330px;
+
+  border-radius: 50%;
+
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.04)
+  );
+
+  backdrop-filter: blur(15px);
+
+  border: 2px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 0 45px rgba(0, 234, 255, 0.35),
+    inset 0 0 40px rgba(255, 255, 255, 0.08);
+}
+
+/* Aro exterior */
+
+.clock-face::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -15px;
+
+  border-radius: 50%;
+
+  border: 2px solid rgba(0, 234, 255, 0.35);
+
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.05);
+
+    opacity: 1;
+  }
+}
+
+/* ===================================
+   NUMEROS
+=================================== */
+
+.numbers span {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  padding-top: 18px;
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+  color: #e0f7ff;
+
+  text-shadow: 0 0 10px #00eaff;
+}
+
+.n1 {
+  transform: rotate(30deg);
+}
+
+.n2 {
+  transform: rotate(60deg);
+}
+
+.n3 {
+  transform: rotate(90deg);
+}
+
+.n4 {
+  transform: rotate(120deg);
+}
+
+.n5 {
+  transform: rotate(150deg);
+}
+
+.n6 {
+  transform: rotate(180deg);
+}
+
+.n7 {
+  transform: rotate(210deg);
+}
+
+.n8 {
+  transform: rotate(240deg);
+}
+
+.n9 {
+  transform: rotate(270deg);
+}
+
+.n10 {
+  transform: rotate(300deg);
+}
+
+.n11 {
+  transform: rotate(330deg);
+}
+
+.n12 {
+  transform: rotate(0deg);
+}
+
+/* ===================================
+   AGUJAS
+=================================== */
+
+.hand {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 50%;
+
+  transform-origin: bottom center;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-end;
+}
+
+.hand span {
+  display: block;
+
+  border-radius: 20px;
+}
+
+/* Hora */
+
+.hour-hand {
+  height: 80px;
+
+  width: 6px;
+}
+
+.hour-hand span {
+  height: 80px;
+
+  width: 6px;
+
+  background: #00eaff;
+
+  box-shadow: 0 0 15px #00eaff;
+}
+
+/* Minuto */
+
+.minute-hand {
+  height: 110px;
+
+  width: 4px;
+}
+
+.minute-hand span {
+  height: 110px;
+
+  width: 4px;
+
+  background: #38bdf8;
+
+  box-shadow: 0 0 15px #38bdf8;
+}
+
+/* Segundero */
+
+.second-hand {
+  height: 125px;
+
+  width: 2px;
+}
+
+.second-hand span {
+  height: 125px;
+
+  width: 2px;
+
+  background: #ff3347;
+
+  box-shadow: 0 0 15px #ff3347;
+}
+
+/* Punto central */
+
+.center-dot {
+  position: absolute;
+
+  width: 15px;
+
+  height: 15px;
+
+  background: white;
+
+  border-radius: 50%;
+
+  box-shadow: 0 0 20px white;
+
+  z-index: 10;
+}
+
+/* ===================================
+   RELOJ DIGITAL
+=================================== */
+
+.digital-clock {
+  text-align: center;
+}
+
+.time {
+  font-size: 70px;
+
+  font-weight: 700;
+
+  letter-spacing: 8px;
+
+  color: #e0f7ff;
+
+  text-shadow:
+    0 0 15px #00eaff,
+    0 0 40px #00eaff;
+}
+
+.date {
+  margin-top: 15px;
+
+  font-size: 20px;
+
+  letter-spacing: 5px;
+
+  color: #94a3b8;
+}
+
+/* ===================================
+   MARCAS DE MINUTOS
+=================================== */
+
+.clock-face::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 25px;
+
+  border-radius: 50%;
+
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+@media (max-width: 600px) {
+  .clock-face {
+    width: 260px;
+
+    height: 260px;
+  }
+
+  .time {
+    font-size: 40px;
+
+    letter-spacing: 4px;
+  }
+
+  .date {
+    font-size: 13px;
+
+    letter-spacing: 3px;
+  }
+}
