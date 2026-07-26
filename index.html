@@ -3,30 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Reloj digital| Futuristic Digital Clock</title>
+    <title>Reloj Digital | Futuristic Digital Clock</title>
 
     <!-- Fuente futurista -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <main class="clock-container">
-      <!-- Efectos de fondo -->
+      <!-- Fondo con efectos -->
       <div class="particles"></div>
 
-      <!-- RELOJ ANALÓGICO -->
+      <!-- ==========================
+             RELOJ ANALÓGICO
+        =========================== -->
       <section class="analog-clock">
         <div class="clock-face">
-          <!-- Marcas del reloj -->
+          <!-- Marcas de minutos -->
+          <div class="markers"></div>
+          <!-- Números del reloj -->
           <div class="numbers">
             <span class="number n12">12</span>
             <span class="number n1">1</span>
@@ -42,16 +44,17 @@
             <span class="number n11">11</span>
           </div>
 
-          <!-- Agujas -->
-
+          <!-- Aguja de horas -->
           <div class="hand hour-hand" id="hour">
             <span></span>
           </div>
 
+          <!-- Aguja de minutos -->
           <div class="hand minute-hand" id="min">
             <span></span>
           </div>
 
+          <!-- Aguja de segundos -->
           <div class="hand second-hand" id="sec">
             <span></span>
           </div>
@@ -61,15 +64,16 @@
         </div>
       </section>
 
-      <!-- RELOJ DIGITAL -->
-
+      <!-- ==========================
+             RELOJ DIGITAL
+        =========================== -->
       <section class="digital-clock">
         <h1 class="time" id="time">00:00:00</h1>
-
         <p class="date" id="date">LUNES 01 ENERO 2026</p>
       </section>
     </main>
 
+    <!-- JavaScript -->
     <script src="script.js"></script>
   </body>
 </html>

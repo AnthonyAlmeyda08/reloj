@@ -1,9 +1,27 @@
 /* ===================================
+   CREAR MARCAS DE MINUTOS
+=================================== */
+
+const markers = document.querySelector(".markers");
+
+for (let i = 0; i < 60; i++) {
+  const marker = document.createElement("span");
+
+  marker.classList.add("marker");
+
+  marker.style.transform = `rotate(${i * 6}deg)`;
+
+  markers.appendChild(marker);
+}
+
+/* ===================================
    RELOJ ANALÓGICO
 =================================== */
 
 const hourHand = document.getElementById("hour");
+
 const minuteHand = document.getElementById("min");
+
 const secondHand = document.getElementById("sec");
 
 function updateClock() {
@@ -108,10 +126,8 @@ function updateDigitalClock() {
   const month = months[now.getMonth()];
 
   const year = now.getFullYear();
-
   date.textContent = `${dayName} • ${day} ${month} ${year}`;
 }
 
 setInterval(updateDigitalClock, 1000);
-
 updateDigitalClock();
