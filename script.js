@@ -33,8 +33,6 @@ function updateClock() {
 
   const seconds = now.getSeconds();
 
-  // Movimiento de agujas
-
   const hourRotation = (hours % 12) * 30 + minutes * 0.5;
 
   const minuteRotation = minutes * 6;
@@ -53,12 +51,14 @@ setInterval(updateClock, 1000);
 updateClock();
 
 /* ===================================
-   RELOJ DIGITAL
+   RELOJ DIGITAL + MODO DEL DIA
 =================================== */
 
 const time = document.getElementById("time");
 
 const date = document.getElementById("date");
+
+const mode = document.getElementById("mode");
 
 function updateDigitalClock() {
   const now = new Date();
@@ -69,6 +69,27 @@ function updateDigitalClock() {
 
   let seconds = now.getSeconds();
 
+  /*
+       CAMBIO AUTOMÁTICO
+       DAY / NIGHT MODE
+    */
+
+  if (hours >= 6 && hours < 18) {
+    document.body.classList.remove("night");
+
+    document.body.classList.add("day");
+
+    mode.textContent = "☀️ DAY MODE";
+  } else {
+    document.body.classList.remove("day");
+
+    document.body.classList.add("night");
+
+    mode.textContent = "🌙 NIGHT MODE";
+  }
+
+  // Formato hora digital
+
   hours = String(hours).padStart(2, "0");
 
   minutes = String(minutes).padStart(2, "0");
@@ -76,6 +97,8 @@ function updateDigitalClock() {
   seconds = String(seconds).padStart(2, "0");
 
   time.textContent = `${hours}:${minutes}:${seconds}`;
+
+  // Fecha
 
   const days = [
     "DOMINGO",
@@ -126,8 +149,10 @@ function updateDigitalClock() {
   const month = months[now.getMonth()];
 
   const year = now.getFullYear();
+
   date.textContent = `${dayName} • ${day} ${month} ${year}`;
 }
 
 setInterval(updateDigitalClock, 1000);
+
 updateDigitalClock();

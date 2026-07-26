@@ -20,14 +20,14 @@
     <main class="clock-container">
       <!-- Fondo con efectos -->
       <div class="particles"></div>
-
-      <!-- ==========================
+      <!-- =========================
              RELOJ ANALÓGICO
         =========================== -->
       <section class="analog-clock">
         <div class="clock-face">
           <!-- Marcas de minutos -->
           <div class="markers"></div>
+
           <!-- Números del reloj -->
           <div class="numbers">
             <span class="number n12">12</span>
@@ -68,9 +68,14 @@
              RELOJ DIGITAL
         =========================== -->
       <section class="digital-clock">
+        <!-- Hora digital -->
         <h1 class="time" id="time">00:00:00</h1>
-        <p class="date" id="date">LUNES 01 ENERO 2026</p>
+        <!-- Fecha -->
+        <p class="date" id="date">LUNES • 01 ENERO 2026</p>
       </section>
+
+      <!-- Estado del sistema -->
+      <div class="mode" id="mode">🌙 NIGHT MODE</div>
     </main>
 
     <!-- JavaScript -->
