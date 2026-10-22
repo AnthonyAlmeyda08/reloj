@@ -1,12 +1,16 @@
 /* ===================================
    RESET GENERAL
 =================================== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ===================================
+   BODY
+=================================== */
 body {
   min-height: 100vh;
   display: flex;
@@ -15,12 +19,12 @@ body {
   overflow: hidden;
   font-family: "Orbitron", sans-serif;
   color: white;
-  transition: 1s ease;
+  transition: background 1s ease;
   background: radial-gradient(circle at center, #111827, #020617 70%);
 }
 
 /* ===================================
-   MODOS DEL DIA
+   MODOS DEL DÍA
 =================================== */
 body.day {
   background: radial-gradient(circle at center, #2563eb, #0f172a 70%);
@@ -52,7 +56,9 @@ body.night {
   filter: blur(160px);
   opacity: 0.15;
   z-index: -1;
-  transition: 1s;
+  transition:
+    background 1s ease,
+    opacity 1s ease;
 }
 
 body.day .clock-container::before {
@@ -81,16 +87,19 @@ body.day .clock-container::before {
   box-shadow:
     0 0 45px rgba(0, 234, 255, 0.35),
     inset 0 0 40px rgba(255, 255, 255, 0.08);
-  transition: 1s;
+  transition: box-shadow 1s ease;
 }
 
+/* Modo día */
 body.day .clock-face {
   box-shadow:
     0 0 45px rgba(255, 215, 0, 0.45),
     inset 0 0 40px rgba(255, 255, 255, 0.15);
 }
 
-/* Aro exterior */
+/* ===================================
+   ARO EXTERIOR
+=================================== */
 .clock-face::before {
   content: "";
   position: absolute;
@@ -104,6 +113,7 @@ body.day .clock-face::before {
   border-color: #ffd700;
 }
 
+/* Animación del aro */
 @keyframes pulse {
   0%,
   100% {
@@ -120,7 +130,6 @@ body.day .clock-face::before {
 /* ===================================
    MARCAS DE MINUTOS
 =================================== */
-
 .markers {
   position: absolute;
   inset: 0;
@@ -130,26 +139,28 @@ body.day .clock-face::before {
   position: absolute;
   width: 2px;
   height: 8px;
-  background: rgba(255, 255, 255, 0.45);
   left: 50%;
   top: 10px;
+  background: rgba(255, 255, 255, 0.45);
   transform-origin: center 155px;
 }
 
+/* Marcas principales cada 5 minutos */
 .marker:nth-child(5n) {
-  height: 14px;
   width: 3px;
+  height: 14px;
   background: #00eaff;
   box-shadow: 0 0 10px #00eaff;
 }
 
+/* Modo día */
 body.day .marker:nth-child(5n) {
   background: #ffd700;
   box-shadow: 0 0 10px #ffd700;
 }
 
 /* ===================================
-   NUMEROS
+   NÚMEROS DEL RELOJ
 =================================== */
 .numbers span {
   position: absolute;
@@ -164,11 +175,14 @@ body.day .marker:nth-child(5n) {
   text-shadow: 0 0 10px #00eaff;
 }
 
+/* Números durante el día */
+
 body.day .numbers span {
   color: white;
   text-shadow: 0 0 10px #ffd700;
 }
 
+/* Posición de números */
 .n1 {
   transform: rotate(30deg);
 }
@@ -220,7 +234,6 @@ body.day .numbers span {
 /* ===================================
    AGUJAS
 =================================== */
-
 .hand {
   position: absolute;
   left: 50%;
@@ -236,29 +249,32 @@ body.day .numbers span {
   border-radius: 20px;
 }
 
+/* Aguja de horas */
 .hour-hand span {
-  height: 80px;
   width: 6px;
+  height: 80px;
   background: #00eaff;
   box-shadow: 0 0 15px #00eaff;
 }
 
+/* Aguja de minutos */
 .minute-hand span {
-  height: 110px;
   width: 4px;
+  height: 110px;
   background: #38bdf8;
   box-shadow: 0 0 15px #38bdf8;
 }
 
+/* Aguja de segundos */
 .second-hand span {
-  height: 125px;
   width: 2px;
+  height: 125px;
   background: #ff3347;
   box-shadow: 0 0 15px #ff3347;
 }
 
 /* ===================================
-   CENTRO
+   CENTRO DEL RELOJ
 =================================== */
 .center-dot {
   position: absolute;
@@ -273,68 +289,10 @@ body.day .numbers span {
 /* ===================================
    RELOJ DIGITAL
 =================================== */
-
 .digital-clock {
   text-align: center;
 }
 
-.mode {
-  font-size: 18px;
-  letter-spacing: 4px;
-  margin-bottom: 10px;
-  color: #00eaff;
-  text-shadow: 0 0 15px #00eaff;
-  transition: 0.5s;
-}
-
-body.day .mode {
-  color: #ffd700;
-  text-shadow: 0 0 15px #ffd700;
-}
-
-.time {
-  font-size: 70px;
-  font-weight: 700;
-  letter-spacing: 8px;
-  color: #e0f7ff;
-  text-shadow:
-    0 0 15px #00eaff,
-    0 0 40px #00eaff;
-}
-
-body.day .time {
-  text-shadow:
-    0 0 15px #ffd700,
-    0 0 40px #ffd700;
-}
-
-.date {
-  margin-top: 15px;
-  font-size: 20px;
-  letter-spacing: 5px;
-  color: #94a3b8;
-}
-
-/* ===================================
-   RESPONSIVE
-=================================== */
-
-@media (max-width: 600px) {
-  .clock-face {
-    width: 260px;
-    height: 260px;
-  }
-
-  .time {
-    font-size: 40px;
-    letter-spacing: 4px;
-  }
-
-  .date {
-    font-size: 13px;
-    letter-spacing: 3px;
-  }
-}
 /* ===================================
    INDICADOR DAY / NIGHT
 =================================== */
@@ -352,18 +310,82 @@ body.day .time {
   color: #00eaff;
   text-shadow: 0 0 15px #00eaff;
   box-shadow: 0 0 20px rgba(0, 234, 255, 0.25);
-  transition: 1s;
+
+  transition:
+    color 1s ease,
+    text-shadow 1s ease,
+    box-shadow 1s ease;
 }
 
-/* Modo día */
+/* Indicador durante el día */
 body.day .mode {
   color: #ffd700;
   text-shadow: 0 0 15px #ffd700;
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
-/* Responsive */
+/* ===================================
+   HORA DIGITAL
+=================================== */
+.time {
+  font-size: 70px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  color: #e0f7ff;
+  text-shadow:
+    0 0 15px #00eaff,
+    0 0 40px #00eaff;
+}
+
+/* Hora durante el día */
+body.day .time {
+  text-shadow:
+    0 0 15px #ffd700,
+    0 0 40px #ffd700;
+}
+
+/* ===================================
+   FECHA
+=================================== */
+.date {
+  margin-top: 15px;
+  font-size: 20px;
+  letter-spacing: 5px;
+  color: #94a3b8;
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
 @media (max-width: 600px) {
+  /* Reloj */
+  .clock-face {
+    width: 260px;
+    height: 260px;
+  }
+
+  /* Marcas */
+  .marker {
+    transform-origin: center 120px;
+  }
+
+  .marker:nth-child(5n) {
+    height: 11px;
+  }
+
+  /* Hora */
+  .time {
+    font-size: 40px;
+    letter-spacing: 4px;
+  }
+
+  /* Fecha */
+  .date {
+    font-size: 13px;
+    letter-spacing: 3px;
+  }
+
+  /* Indicador */
   .mode {
     top: 20px;
     right: 20px;
